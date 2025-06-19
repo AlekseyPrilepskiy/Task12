@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 3583470578752734757, guid: 093b1c30cee45ac4288f4ad16ac02cc5, type: 3}
-  _poolSize: 4
+  _poolSize: 8
   _lifeTime: 2
 --- !u!4 &215773172
 Transform:

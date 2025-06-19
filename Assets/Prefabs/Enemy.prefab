@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1231985382627558789}
   - component: {fileID: 9082397738814227766}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 4237106313271804536}
   - component: {fileID: 3711875343483376815}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

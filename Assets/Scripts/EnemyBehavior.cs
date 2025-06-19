@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
@@ -13,7 +11,7 @@ public class EnemyBehavior : MonoBehaviour
 
     public event Action<EnemyBehavior> Crashed;
 
-    private void Start()
+    private void Awake()
     {
         _mover = GetComponent<Mover>();
     }
@@ -32,7 +30,7 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
-    public void FixedUpdate()
+    private void FixedUpdate()
     {
         if (_isAlive)
         {

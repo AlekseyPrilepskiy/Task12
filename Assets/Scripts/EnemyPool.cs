@@ -50,6 +50,7 @@ public class EnemyPool : MonoBehaviour
 
         newEnemy.gameObject.SetActive(true);
         newEnemy.Crashed += ReturnEnemy;
+
         _enemiesPool.Add(newEnemy);
         return newEnemy;
     }

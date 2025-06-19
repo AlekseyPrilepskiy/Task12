@@ -6,7 +6,9 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private List<SpawnPoint> _spawnPoints;
+
     [SerializeField] private EnemyPool _enemyPool;
+
     [SerializeField] float _spawnTime = 2f;
 
     private int _spawnPointsCount;

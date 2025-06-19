@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ColorChanger : MonoBehaviour
 {
-    [SerializeField] Material _enemyMaterial;
-    [SerializeField] Material _deadMaterial;
+    [SerializeField] private Material _enemyMaterial;
+    [SerializeField] private Material _deadMaterial;
 
     private EnemyBehavior _enemy;
     private Renderer _renderer;
@@ -22,7 +20,7 @@ public class ColorChanger : MonoBehaviour
 
         foreach (Renderer renderer in renderers)
         {
-            if (renderer.gameObject.name == "Capsule")
+            if (renderer.gameObject.name == "Body")
             {
                 _renderer = renderer;
             }
