@@ -5,9 +5,7 @@ using UnityEngine;
 public class EnemyPool : MonoBehaviour
 {
     [SerializeField] private EnemyBehavior _enemyPrefab;
-
     [SerializeField] private int _poolSize = 8;
-
     [SerializeField] private float _lifeTime = 2f;
 
     private List<EnemyBehavior> _enemiesPool;

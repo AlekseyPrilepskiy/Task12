@@ -356,5 +356,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e30369e70ed13a840be5efc71e7a04f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyMaterial: {fileID: 2100000, guid: 1271e98cac6d084498477ae20127b1d5, type: 2}
-  _deadMaterial: {fileID: 2100000, guid: 165476c7f950fe541896a1f41f76c24c, type: 2}
+  _renderer: {fileID: 1231985382627558789}
+  _defaultMaterial: {fileID: 2100000, guid: 1271e98cac6d084498477ae20127b1d5, type: 2}
+  _changedMaterial: {fileID: 2100000, guid: 165476c7f950fe541896a1f41f76c24c, type: 2}

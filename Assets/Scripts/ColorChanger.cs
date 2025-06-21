@@ -2,44 +2,30 @@ using UnityEngine;
 
 public class ColorChanger : MonoBehaviour
 {
-    [SerializeField] private Material _enemyMaterial;
-    [SerializeField] private Material _deadMaterial;
+    [SerializeField] private Renderer _renderer;
+    [SerializeField] private Material _defaultMaterial;
+    [SerializeField] private Material _changedMaterial;
 
-    private EnemyBehavior _enemy;
-    private Renderer _renderer;
+    private IColorChangeNotifier _colorChangeNotifier;
 
     private void Awake()
     {
-        _enemy = GetComponent<EnemyBehavior>();
-        _renderer = GetComponent<Renderer>();
-    }
-
-    private void Start()
-    {
-        Renderer[] renderers = GetComponentsInChildren<Renderer>();
-
-        foreach (Renderer renderer in renderers)
-        {
-            if (renderer.gameObject.name == "Body")
-            {
-                _renderer = renderer;
-            }
-        }
+        _colorChangeNotifier = GetComponent<IColorChangeNotifier>();
     }
 
     private void OnEnable()
     {
-        _renderer.material = _enemyMaterial;
-        _enemy.Crashed += Change;
+        _renderer.material = _defaultMaterial;
+        _colorChangeNotifier.StatusChanged += Change;
     }
 
     private void OnDisable()
     {
-        _enemy.Crashed -= Change;
+        _colorChangeNotifier.StatusChanged -= Change;
     }
 
-    private void Change(EnemyBehavior enemy)
+    private void Change()
     {
-        _renderer.material = _deadMaterial;
+        _renderer.material = _changedMaterial;
     }
 }
