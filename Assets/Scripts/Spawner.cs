@@ -6,8 +6,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private List<SpawnPoint> _spawnPoints;
-    [SerializeField] private EnemyPool _enemyPool;
-    [SerializeField] float _spawnTime = 2f;
+    [SerializeField] private float _spawnTime = 2f;
 
     private int _spawnPointsCount;
     private WaitForSeconds _waitForSeconds;
@@ -25,14 +24,7 @@ public class Spawner : MonoBehaviour
         {
             yield return _waitForSeconds;
 
-            EnemyBehavior enemy = _enemyPool.GetEnemy();
-            enemy.transform.position = _spawnPoints[UnityEngine.Random.Range(0, _spawnPointsCount)].transform.position;
-
-            Vector3 direction = UnityEngine.Random.onUnitSphere;
-            direction.y = 0;
-            direction.Normalize();
-
-            enemy.SetDirection(direction);
+            _spawnPoints[UnityEngine.Random.Range(0, _spawnPointsCount)].CreateEnemy();
         }
     }
 }

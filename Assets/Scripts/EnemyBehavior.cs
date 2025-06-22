@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour, IColorChangeNotifier
 {
+    private TargetBehavior _target;
     private Mover _mover;
-    private Vector3 _direction;
     private bool _isAlive;
 
     public event Action<EnemyBehavior> Crashed;
@@ -24,13 +24,13 @@ public class EnemyBehavior : MonoBehaviour, IColorChangeNotifier
     {
         if (_isAlive)
         {
-            _mover.Move(_direction);
+            _mover.Move(_target);
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (_isAlive == true && collision.gameObject.TryGetComponent<Wall>(out _))
+        if (_isAlive == true && (collision.gameObject.TryGetComponent<Wall>(out _) || collision.gameObject.TryGetComponent<TargetBehavior>(out _)))
         {
             Crashed?.Invoke(this);
             StatusChanged?.Invoke();
@@ -38,8 +38,8 @@ public class EnemyBehavior : MonoBehaviour, IColorChangeNotifier
         }
     }
 
-    public void SetDirection(Vector3 direction)
+    public void SetTarget(TargetBehavior target)
     {
-        _direction = direction;
+        _target = target;
     }
 }

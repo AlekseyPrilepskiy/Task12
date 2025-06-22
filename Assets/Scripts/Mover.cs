@@ -1,10 +1,12 @@
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Mover : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
 
     private Rigidbody _rigidbody;
+    private float _rotationSpeed = 10f;
 
     private void Awake()
     {
@@ -18,13 +20,12 @@ public class Mover : MonoBehaviour
         transform.rotation = Quaternion.identity;
     }
 
-    public void Move(Vector3 direction)
+    public void Move(TargetBehavior target)
     {
-        if (direction != Vector3.zero)
-        {
-            Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
-            transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, Time.deltaTime * 10f);
-            _rigidbody.MovePosition(_rigidbody.position + direction.normalized * speed * Time.fixedDeltaTime);
-        }
+        Vector3 direction = (target.transform.position - transform.position).normalized;
+
+        Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
+        transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, Time.deltaTime * _rotationSpeed);
+        _rigidbody.MovePosition(_rigidbody.position + direction.normalized * speed * Time.fixedDeltaTime);
     }
 }
